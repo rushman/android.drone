@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:onClick="turnLeft">
+    <TableLayout android:layout_height="wrap_content" android:id="@+id/tableLayout1" android:layout_width="wrap_content">
+    <Button android:id="@+id/button1" android:onClick="startUp" android:layout_height="wrap_content" android:text="@string/get_off_button"  android:layout_width="wrap_content" android:gravity="center"></Button>
+    <Button android:id="@+id/button3" android:layout_height="wrap_content" android:text="@string/button_left" android:layout_width="wrap_content" android:onClick="turnLeft"></Button>
+    <Button android:id="@+id/button4" android:layout_height="wrap_content" android:text="@string/button_right" android:layout_width="wrap_content" android:onClick="turnRight"></Button>
+    <Button android:id="@+id/button2" android:gravity="center|left" android:onClick="getDown" android:text="@string/get_down_button" android:layout_height="wrap_content" android:layout_width="wrap_content"></Button>
+    </TableLayout>
+    <TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center_horizontal|bottom" android:id="@+id/helloTextView" android:text="@string/text_view_initial"></TextView>
+</LinearLayout>
