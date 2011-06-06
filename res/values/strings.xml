@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Drone Droid by Acid</string>
+    <string name="app_name">Drone Droid</string>
     <string name="get_off_button">Get It Off</string>
     <string name="text_view_initial">Status Information</string>
     <string name="edit_view_initial"></string>
@@ -12,4 +12,5 @@
     <string name="button_right">Right</string>
     <string name="turn_left">Turning Left</string>
     <string name="turn_right">Turning Right</string>
+
 </resources>

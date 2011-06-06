@@ -3,6 +3,8 @@ package de.leuphana.android.drone;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import de.leuphana.android.drone.connector.ConnectToDrone;
 import de.leuphana.android.drone.connector.DroneCommands;
@@ -15,6 +17,10 @@ public class Drone extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+			WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		super.onCreate(savedInstanceState);
 
