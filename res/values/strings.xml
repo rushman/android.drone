@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Drone Droid</string>
-    <string name="get_off_button">Get It Off</string>
     <string name="text_view_initial">Status Information</string>
     <string name="edit_view_initial"></string>
     <string name="hello_text">Hello, %1$s ! :-)</string>
-    <string name="get_off">Starting the Drone</string>
-    <string name="get_down">Drone getting down</string>
-    <string name="get_down_button">Get It Down</string>
-    <string name="button_left">Left</string>
-    <string name="button_right">Right</string>
-    <string name="turn_left">Turning Left</string>
-    <string name="turn_right">Turning Right</string>
-
+    <string name="button_get_off"></string>
+    <string name="button_get_down"></string>
+    <string name="button_left"></string>
+    <string name="button_right"></string>
+    <string name="get_off">getting_off</string>
+    <string name="get_down">getting_down</string>
+    <string name="turn_left">turning_left</string>
+    <string name="turn_right">turning_right</string>
 </resources>
