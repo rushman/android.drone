@@ -33,24 +33,24 @@ public class Drone extends Activity {
 	}
 
 	// Method for starting the drone and sending Information to View.
-	public void startUp(View view) {
+	public void moveForward(View view) {
 
 		// this.control.start();
 
 		TextView textView = (TextView) this.findViewById(R.id.helloTextView);
 
-		textView.setText(String.format(this.getResources().getString(R.string.get_off)));
+		textView.setText(String.format(this.getResources().getString(R.string.move_forward)));
 
 	}
 
 	// Method for landing the drone and sending Information to View.
-	public void getDown(View view) {
+	public void moveBackward(View view) {
 
 		// this.control.land();
 
 		TextView textView = (TextView) this.findViewById(R.id.helloTextView);
 
-		textView.setText(String.format(this.getResources().getString(R.string.get_down)));
+		textView.setText(String.format(this.getResources().getString(R.string.move_backward)));
 
 	}
 
@@ -74,5 +74,36 @@ public class Drone extends Activity {
 
 		textView.setText(String.format(this.getResources().getString(R.string.turn_right)));
 
+	}
+
+	// Method for turning the drone left and sending Information to View.
+	public void moveLeft(View view) {
+
+		// this.control.turnHorz(0.2f);
+
+		TextView textView = (TextView) this.findViewById(R.id.helloTextView);
+
+		textView.setText(String.format(this.getResources().getString(R.string.move_left)));
+
+	}
+
+	// Method for turning the drone right and sending Information to View.
+	public void moveRight(View view) {
+
+		// this.control.turnHorz(-0.2f);
+
+		TextView textView = (TextView) this.findViewById(R.id.helloTextView);
+
+		textView.setText(String.format(this.getResources().getString(R.string.move_right)));
+
+	}
+
+	public void getOffOrDown(View view) {
+
+		// getFlyingState
+
+		TextView textView = (TextView) this.findViewById(R.id.helloTextView);
+
+		textView.setText(String.format(this.getResources().getString(R.string.get_state_down)));
 	}
 }

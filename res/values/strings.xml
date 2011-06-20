@@ -4,12 +4,18 @@
     <string name="text_view_initial">Status Information</string>
     <string name="edit_view_initial"></string>
     <string name="hello_text">Hello, %1$s ! :-)</string>
-    <string name="button_get_off"></string>
-    <string name="button_get_down"></string>
-    <string name="button_left"></string>
-    <string name="button_right"></string>
-    <string name="get_off">getting_off</string>
-    <string name="get_down">getting_down</string>
-    <string name="turn_left">turning_left</string>
-    <string name="turn_right">turning_right</string>
+    <string name="button_move_forward"></string>
+    <string name="button_move_backward"></string>
+    <string name="button_turn_left"></string>
+    <string name="button_turn_right"></string>
+    <string name="button_move_left"></string>
+    <string name="button_move_right"></string>
+    <string name="button_start_land"></string>
+    <string name="move_forward">Move Forward</string>
+    <string name="move_backward">Move Backward</string>
+    <string name="turn_left">Turn Left</string>
+    <string name="turn_right">Turn Right</string>
+    <string name="move_left">Move Left</string>
+    <string name="move_right">Move Right</string>
+    <string name="get_state_down">Start/Land</string>
 </resources>
