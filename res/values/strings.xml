@@ -8,16 +8,22 @@
     <string name="button_move_backward"></string>
     <string name="button_turn_left"></string>
     <string name="button_turn_right"></string>
+    <string name="button_move_up"></string>
+    <string name="button_move_down"></string>
     <string name="button_move_left"></string>
     <string name="button_move_right"></string>
     <string name="button_start_land"></string>
+    <string name="button_panic"></string>
     <string name="move_forward">Move Forward</string>
     <string name="move_backward">Move Backward</string>
+    <string name="move_up">Move Up</string>
+    <string name="move_down">Move Down</string>
     <string name="turn_left">Turn Left</string>
     <string name="turn_right">Turn Right</string>
     <string name="move_left">Move Left</string>
     <string name="move_right">Move Right</string>
-    <string name="get_down">Landing</string>
-    <string name="get_off">Starting</string>
-    <string name="balance"></string>
+    <string name="get_down">Landed</string>
+    <string name="get_off">Started</string>
+    <string name="hover">Hover</string>
+    <string name="panic">Panic</string>
 </resources>
