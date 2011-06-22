@@ -132,6 +132,8 @@ public class DPadView extends View {
 		TextView textView = (TextView) view;
 
 		textView.setText(String.format(this.getResources().getString(R.string.get_off)));
+
+		Log.w("MOVEMENT", "GET OFF");
 	}
 
 	/**
@@ -146,6 +148,8 @@ public class DPadView extends View {
 		TextView textView = (TextView) view;
 
 		textView.setText(String.format(this.getResources().getString(R.string.get_down)));
+
+		Log.w("MOVEMENT", "GET DOWN");
 	}
 
 	/**

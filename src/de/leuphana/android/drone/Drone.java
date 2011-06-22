@@ -230,6 +230,8 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 	public void panic(View view) {
 
 		dPadView.panic(textView);
+		this.finish();
+
 	}
 
 	/**
