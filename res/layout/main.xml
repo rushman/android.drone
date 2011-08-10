@@ -15,5 +15,5 @@
     <Button android:gravity="center" android:drawableTop="@drawable/panic" android:width="100dp" android:text="@string/button_panic" android:layout_height="wrap_content" android:id="@+id/button_panic" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_x="235dip" android:layout_y="260dip" android:onClick="panic"></Button>
     <ToggleButton android:id="@+id/button_start_land" android:drawableTop="@drawable/startland" android:background="@android:color/transparent"  android:textOn="" android:textOff="" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_x="5dip" android:layout_y="5dip" android:onClick="getOffOrDown"></ToggleButton>
     <ToggleButton android:id="@+id/button_gyro" android:drawableTop="@drawable/gyro" android:background="@android:color/transparent" android:textOn="" android:textOff="" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_x="5dip" android:layout_y="40dip" android:onClick="gyroOnOff"></ToggleButton>
-
+	
 </AbsoluteLayout>

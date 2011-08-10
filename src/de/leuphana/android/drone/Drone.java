@@ -63,7 +63,7 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 		accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
 		// R = LayoutClass from res
-		this.setContentView(R.layout.main);
+		this.setContentView(R.layout.firstview);
 
 		// Buttons from MainView
 		button_move_left = (Button) findViewById(R.id.button_move_left);
@@ -247,6 +247,16 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 		} else {
 			gyro = false;
 		}
+	}
+
+	/**
+	 * Starts the main application and changes the view.
+	 * 
+	 * @param view
+	 */
+	public void startApp(View view) {
+
+		this.setContentView(R.layout.main);
 	}
 
 	/**
