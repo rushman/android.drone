@@ -65,16 +65,6 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 		// R = LayoutClass from res
 		this.setContentView(R.layout.firstview);
 
-		// Buttons from MainView
-		button_move_left = (Button) findViewById(R.id.button_move_left);
-		button_move_right = (Button) findViewById(R.id.button_move_right);
-		button_move_forward = (Button) findViewById(R.id.button_move_forward);
-		button_move_backward = (Button) findViewById(R.id.button_move_backward);
-		button_move_up = (Button) findViewById(R.id.button_move_up);
-		button_move_down = (Button) findViewById(R.id.button_move_down);
-		button_turn_left = (Button) findViewById(R.id.button_turn_left);
-		button_turn_right = (Button) findViewById(R.id.button_turn_right);
-
 		// get ImageView
 		imageView = (ImageView) findViewById(R.id.imageView);
 
@@ -100,6 +90,16 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 	 */
 	@Override
 	public boolean onTouch(View view, MotionEvent event) {
+
+		// Buttons from MainView
+		button_move_left = (Button) findViewById(R.id.button_move_left);
+		button_move_right = (Button) findViewById(R.id.button_move_right);
+		button_move_forward = (Button) findViewById(R.id.button_move_forward);
+		button_move_backward = (Button) findViewById(R.id.button_move_backward);
+		button_move_up = (Button) findViewById(R.id.button_move_up);
+		button_move_down = (Button) findViewById(R.id.button_move_down);
+		button_turn_left = (Button) findViewById(R.id.button_turn_left);
+		button_turn_right = (Button) findViewById(R.id.button_turn_right);
 
 		int eventId = event.getAction();
 
@@ -157,6 +157,16 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 
 		// ids for touchUp or release events put the buttons into unpressed state
 		else if (eventId == 1 || eventId == 6 || eventId == 262 || eventId == 518) {
+
+			// Buttons from MainView
+			button_move_left = (Button) findViewById(R.id.button_move_left);
+			button_move_right = (Button) findViewById(R.id.button_move_right);
+			button_move_forward = (Button) findViewById(R.id.button_move_forward);
+			button_move_backward = (Button) findViewById(R.id.button_move_backward);
+			button_move_up = (Button) findViewById(R.id.button_move_up);
+			button_move_down = (Button) findViewById(R.id.button_move_down);
+			button_turn_left = (Button) findViewById(R.id.button_turn_left);
+			button_turn_right = (Button) findViewById(R.id.button_turn_right);
 
 			button_move_left.setPressed(false);
 			button_move_right.setPressed(false);
@@ -257,6 +267,15 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 	public void startApp(View view) {
 
 		this.setContentView(R.layout.main);
+
+		// get ImageView
+		imageView = (ImageView) findViewById(R.id.imageView);
+
+		// set TouchListener to the ImageView which lies on the main view
+		imageView.setOnTouchListener(this);
+
+		// get TextView for
+		textView = (TextView) findViewById(R.id.textView);
 	}
 
 	/**
