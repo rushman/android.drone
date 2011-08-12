@@ -7,10 +7,10 @@ import de.leuphana.ardrone.dronesystem.domain.util.Util;
 import de.leuphana.ardrone.dronesystem.network.CommandSender;
 
 /**
- * Given a list of initialization commands, sends all commands to the drone and
- * then initializes the Keep-Alive and Commander routines. TODO: current
- * implementation does not check whether the commands are received/accepted.
- * Implement a check whether navdata received reflects init commands sent.
+ * Given a list of initialization commands, sends all commands to the drone and then initializes the
+ * Keep-Alive and Commander routines. TODO: current implementation does not check whether the
+ * commands are received/accepted. Implement a check whether navdata received reflects init commands
+ * sent.
  * 
  * @see {@link KeepAlive}, {@link Commander}
  * @author Florian, Moritz
@@ -50,17 +50,15 @@ public class Init {
 				Commander.stop();
 				NavData.stop();
 				for (Command command : initCommands) {
-					CommandSender.INSTANCE.sendCommand(command
-							.getMessageWithCounter());
+					CommandSender.INSTANCE.sendCommand(command.getMessageWithCounter());
 					Util.sleepMillis(20);
-					CommandSender.INSTANCE.sendCommand(COMMAND_ACK.with(Counter
-							.get()));
+					CommandSender.INSTANCE.sendCommand(COMMAND_ACK.with(Counter.get()));
 					Util.sleepMillis(20);
 				}
 				KeepAlive.start();
 				Commander.start();
-				NavData.start();
-				VideoStreamer.start();
+				// NavData.start();
+				// VideoStreamer.start();
 			}
 		};
 		Thread t = new Thread(r);

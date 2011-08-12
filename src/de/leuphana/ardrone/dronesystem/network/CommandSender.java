@@ -10,9 +10,9 @@ import java.net.UnknownHostException;
 import de.leuphana.ardrone.dronesystem.domain.util.Config;
 
 /**
- * Klasse zum Aufbauen einer UDP-Verbindung mit einem Rechner/Drone im Netzwerk
- * Zum verbinden mit der Drone eine neue Instanz dieser Klasse erzeugen Zum
- * Senden von Paketen an die Drone sendCommand nutzen
+ * Klasse zum Aufbauen einer UDP-Verbindung mit einem Rechner/Drone im Netzwerk Zum verbinden mit
+ * der Drone eine neue Instanz dieser Klasse erzeugen Zum Senden von Paketen an die Drone
+ * sendCommand nutzen
  * 
  * @author ICH
  * 
@@ -52,8 +52,7 @@ public enum CommandSender {
 	}
 
 	/**
-	 * sendet den �bergebenen String an die Drohne und f�gt einen CarriageReturn
-	 * linefeed hinzu
+	 * sendet den �bergebenen String an die Drohne und f�gt einen CarriageReturn linefeed hinzu
 	 * 
 	 * @param command
 	 * @return whether sending the command succeeded
@@ -63,8 +62,8 @@ public enum CommandSender {
 	}
 
 	/**
-	 * verpackt einen String in ein Datenpaket und sendet dieses an die bei der
-	 * Initialisierung angegebene IP-Adresse auf Port 5556.
+	 * verpackt einen String in ein Datenpaket und sendet dieses an die bei der Initialisierung
+	 * angegebene IP-Adresse auf Port 5556.
 	 * 
 	 * @param command
 	 * @return whether sending the command succeeded
@@ -73,11 +72,11 @@ public enum CommandSender {
 		if (inetAddress == null || commandSocket == null)
 			open();
 		byte[] bytes = command.getBytes();
-		DatagramPacket packet = new DatagramPacket(bytes, bytes.length,
-				inetAddress, Config.getCmdPort());
+		DatagramPacket packet = new DatagramPacket(bytes, bytes.length, inetAddress,
+			Config.getCmdPort());
 		try {
 			commandSocket.send(packet);
-			System.out.println("NET: " + command);
+			// System.out.println("NET: " + command);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();

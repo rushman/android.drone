@@ -115,10 +115,23 @@ public class FlightManager implements IControlDrone {
 
 	@Override
 	public void move(Float tilt, Float vertical, Float horizontal, Float rotation) {
-		moveInternal(valueAndSpeedToFloat(tiltSpeed, tilt),
-			valueAndSpeedToFloat(verticalSpeed, vertical),
-			valueAndSpeedToFloat(horzSpeed, horizontal),
-			valueAndSpeedToFloat(rotationSpeed, rotation));
+		this.tilt = (tilt == null) ? this.tilt : tilt;
+		this.vertical = (vertical == null) ? this.vertical : vertical;
+		this.horizontal = (horizontal == null) ? this.horizontal : horizontal;
+		this.rotation = (rotation == null) ? this.rotation : rotation;
+		String tiltString = valueAndSpeedToString(tiltSpeed, this.tilt);
+		String verticalString = valueAndSpeedToString(verticalSpeed, this.vertical);
+		String horz = valueAndSpeedToString(horzSpeed, this.horizontal);
+		String rot = valueAndSpeedToString(rotationSpeed, this.rotation);
+
+		Command command = new Command(CmdValue.COMMAND_NAV);
+		int mode = ConfigurationManager.getConfiguration().isInGameMode() ? 0 : 1;
+		command.replace(mode, tiltString, horz, verticalString, rot);
+		String name = MessageFormat.format(
+			"MOVE tilt: {0},horizontal: {1},vertical: {2},rotate: {3}", this.tilt, this.horizontal,
+			this.vertical, this.rotation);
+		command.info = name;
+		Commander.setCommand(command);
 	}
 
 	/**
@@ -200,8 +213,8 @@ public class FlightManager implements IControlDrone {
 		return ((baseSpeed * speed) / 10.0f) / 100.0f;
 	}
 
-	private float valueAndSpeedToFloat(int speed, float value) {
-		return ensureFloatInRange((speedToFloat(speed) * value), -1f, 1f);
+	private String valueAndSpeedToString(int speed, float value) {
+		return toIntString(ensureFloatInRange((speedToFloat(speed) * value), -1f, 1f));
 	}
 
 	private String toIntString(float f) {

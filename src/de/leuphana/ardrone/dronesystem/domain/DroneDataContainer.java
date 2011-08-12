@@ -1,5 +1,6 @@
 package de.leuphana.ardrone.dronesystem.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.leuphana.ardrone.dronesystem.api.INavDataOption;
@@ -11,10 +12,15 @@ import de.leuphana.ardrone.dronesystem.api.INavDataOption;
  * 
  */
 public class DroneDataContainer {
-	private List<INavDataOption> options;
+	private final List<INavDataOption> options;
 	private int seqNumber;
 	private int stateValues;
 	private int visionFlag;
+
+	public DroneDataContainer() {
+
+		options = new ArrayList<INavDataOption>();
+	}
 
 	public int getSeqNumber() {
 		return seqNumber;
@@ -25,8 +31,7 @@ public class DroneDataContainer {
 	}
 
 	/**
-	 * vision flag is basically an integer. Eventually has to be interpreted by
-	 * the parser
+	 * vision flag is basically an integer. Eventually has to be interpreted by the parser
 	 * 
 	 * @return
 	 */

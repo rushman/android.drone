@@ -56,16 +56,15 @@ public class VideoStreamer {
 		System.out.println("init started");
 		try {
 			// System.out.println("Send trigger flag to UDP port ");
+			VideoReceiver.INSTANCE.open();
 			VideoReceiver.INSTANCE.sendTrash();
 			// Image site setzen
 			DroneImageConverter.setWidth(320);// eventually different
 												// resolution
 			DroneImageConverter.setHeight(240);
 			// Video Channel setzen
-			CommandSender.INSTANCE.sendCommand(CmdValue.CONF_VIDEO.with(Counter
-					.get()));
-			CommandSender.INSTANCE.sendCommand(CmdValue.COMMAND_ACK
-					.with(Counter.get()));
+			CommandSender.INSTANCE.sendCommand(CmdValue.CONF_VIDEO.with(Counter.get()));
+			CommandSender.INSTANCE.sendCommand(CmdValue.COMMAND_ACK.with(Counter.get()));
 
 		} catch (IOException e) {
 			System.err.println("Unable to init videostreamer");

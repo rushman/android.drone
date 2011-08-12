@@ -70,6 +70,9 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 		// R = LayoutClass from res
 		this.setContentView(R.layout.firstview);
 
+		controller = new Controller();
+
+		dPadView = new DPadView(this);
 		// get ImageView
 		imageView = (ImageView) findViewById(R.id.imageView);
 
@@ -78,10 +81,6 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 
 		// get TextView for
 		textView = (TextView) findViewById(R.id.textView);
-
-		controller = new Controller();
-
-		dPadView = new DPadView(this);
 
 		super.onCreate(savedInstanceState);
 
@@ -271,6 +270,7 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 	public void startApp(View view) {
 
 		this.setContentView(R.layout.main);
+		controller.initialize();
 
 		// get ImageView
 		imageView = (ImageView) findViewById(R.id.imageView);
@@ -281,7 +281,6 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 		// get TextView for
 		textView = (TextView) findViewById(R.id.textView);
 
-		controller.initialize();
 	}
 
 	/**

@@ -22,21 +22,20 @@ public class Commander {
 	private static ScheduledFuture<?> future;
 	// 4 + e
 	/**
-	 * Runnable that is executed in by the ScheduledExecutorService and sends a
-	 * command to the drone.
+	 * Runnable that is executed in by the ScheduledExecutorService and sends a command to the
+	 * drone.
 	 */
 	private static Runnable probe = new Runnable() {
 
 		@Override
 		public void run() {
-			CommandSender.INSTANCE.sendCommand(commandInternal
-					.getMessageWithCounter());
+			CommandSender.INSTANCE.sendCommand(commandInternal.getMessageWithCounter());
 		}
 	};
 
 	/**
-	 * Starts the ThreadPool and attaches the Runnable. Attempts to shutdown the
-	 * TreadPool if it already exists.
+	 * Starts the ThreadPool and attaches the Runnable. Attempts to shutdown the TreadPool if it
+	 * already exists.
 	 */
 	public static void start() {
 		if (executorTassadar != null) {
@@ -54,8 +53,8 @@ public class Commander {
 	}
 
 	/**
-	 * Soft-reset: attempts to terminate the current Runnable, if unable to do
-	 * so, falls back to {@link #kill()}
+	 * Soft-reset: attempts to terminate the current Runnable, if unable to do so, falls back to
+	 * {@link #kill()}
 	 */
 	public static void stop() {
 		if (future != null) {
@@ -69,27 +68,26 @@ public class Commander {
 	/**
 	 * Hard-reset: Ignores any Runnables and attempts to kill the ThreadPool
 	 * 
-	 * @throws RuntimeException
-	 *             if ThreadPool cannot be terminated.
+	 * @throws RuntimeException if ThreadPool cannot be terminated.
 	 */
 	public static void kill() {
 		if (executorTassadar != null) {
 			executorTassadar.shutdownNow();
 			if (!executorTassadar.isShutdown())
 				throw new RuntimeException(
-						"Unable to terminate tassadar, please contact your overmind");
+					"Unable to terminate tassadar, please contact your overmind");
 		}
 	}
 
 	/**
-	 * Sets the command to be sent to the drone. There is no warranty that a
-	 * command is actually sent to the drone, as each call overwrites the
-	 * previous value and the Runnable only reads the command every 30ms.
+	 * Sets the command to be sent to the drone. There is no warranty that a command is actually
+	 * sent to the drone, as each call overwrites the previous value and the Runnable only reads the
+	 * command every 30ms.
 	 * 
-	 * @param command
-	 *            the command to be sent to the drone
+	 * @param command the command to be sent to the drone
 	 */
 	public synchronized static void setCommand(Command command) {
+		sendInstantCommand(command);
 		commandInternal = command;
 	}
 
@@ -102,13 +100,11 @@ public class Commander {
 	}
 
 	/**
-	 * Starts a new ScheduledThreadPool and attaches a Runnable to be executed
-	 * every 300ms
+	 * Starts a new ScheduledThreadPool and attaches a Runnable to be executed every 300ms
 	 */
 	private static void startInternal() {
 		executorTassadar = Executors.newScheduledThreadPool(1);
-		future = executorTassadar.scheduleAtFixedRate(probe, 0, 300,
-				TimeUnit.MILLISECONDS);
+		future = executorTassadar.scheduleAtFixedRate(probe, 0, 500, TimeUnit.MILLISECONDS);
 	}
 
 	public static void setCommand(CmdValue commandValue) {

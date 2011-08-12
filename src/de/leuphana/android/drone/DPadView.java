@@ -15,12 +15,18 @@ import de.leuphana.ardrone.dronesystem.api.IControlDrone;
  */
 public class DPadView extends View {
 
-	private final IControlDrone flightManager;
+	private IControlDrone flightManager;
 
 	public DPadView(Context main) {
 		super(main);
 		flightManager = Drone.controller.getFlightManager();
 
+	}
+
+	public IControlDrone getFlightManager() {
+		if (flightManager == null)
+			flightManager = Drone.controller.getFlightManager();
+		return flightManager;
 	}
 
 	/**
@@ -49,7 +55,7 @@ public class DPadView extends View {
 	 */
 	public void moveBackward(View view, float moveValue) {
 
-		flightManager.move(null, null, moveValue, null);
+		getFlightManager().move(null, null, moveValue, null);
 
 		// this.control.land();
 
@@ -68,7 +74,7 @@ public class DPadView extends View {
 	 */
 	public void turnLeft(View view, float moveValue) {
 
-		flightManager.move(null, null, null, moveValue);
+		getFlightManager().move(null, null, null, moveValue);
 
 		// this.control.turnHorz(0.2f);
 
@@ -86,7 +92,7 @@ public class DPadView extends View {
 	 */
 	public void turnRight(View view, float moveValue) {
 
-		flightManager.move(null, null, null, moveValue);
+		getFlightManager().move(null, null, null, moveValue);
 
 		// this.control.turnHorz(-0.2f);
 
@@ -105,7 +111,7 @@ public class DPadView extends View {
 	 */
 	public void moveLeft(View view, float moveValue) {
 
-		flightManager.move(moveValue, null, null, null);
+		getFlightManager().move(moveValue, null, null, null);
 
 		// this.control.turnHorz(0.2f);
 
@@ -124,7 +130,7 @@ public class DPadView extends View {
 	 */
 	public void moveRight(View view, float moveValue) {
 
-		flightManager.move(moveValue, null, null, null);
+		getFlightManager().move(moveValue, null, null, null);
 
 		// this.control.turnHorz(-0.2f);
 
@@ -143,7 +149,7 @@ public class DPadView extends View {
 	 */
 	public void getOff(View view) {
 
-		flightManager.start();
+		getFlightManager().start();
 
 		// getFlyingState
 
@@ -161,7 +167,7 @@ public class DPadView extends View {
 	 */
 	public void getDown(View view) {
 
-		flightManager.land();
+		getFlightManager().land();
 
 		// getFlyingState
 
@@ -179,7 +185,7 @@ public class DPadView extends View {
 	 */
 	public void hover(View view) {
 
-		flightManager.hover(true);
+		getFlightManager().hover(true);
 
 		// this.control.turnHorz(0.2f);
 
@@ -198,7 +204,7 @@ public class DPadView extends View {
 	 */
 	public void moveUp(View view, float moveValue) {
 
-		flightManager.move(null, moveValue, null, null);
+		getFlightManager().move(null, moveValue, null, null);
 
 		// this.control.turnHorz(0.2f);
 
@@ -217,7 +223,7 @@ public class DPadView extends View {
 	 */
 	public void moveDown(View view, float moveValue) {
 
-		flightManager.move(null, moveValue, null, null);
+		getFlightManager().move(null, moveValue, null, null);
 
 		// this.control.turnHorz(0.2f);
 
@@ -236,7 +242,7 @@ public class DPadView extends View {
 	 */
 	public void panic(View view) {
 
-		flightManager.land();
+		getFlightManager().land();
 
 		// this.control.turnHorz(0.2f);
 
