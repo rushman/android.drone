@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import de.leuphana.android.drone.connector.DroneCommands;
+import de.leuphana.ardrone.dronesystem.management.Controller;
 
 /**
  * Drone class as initial activity. It offers the OnTouchListener and the SensorEventListener to
@@ -41,6 +43,9 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 	private Button button_move_down;
 	private Button button_turn_left;
 	private Button button_turn_right;
+
+	private final float moveValue = 0.5f;
+	public static Controller controller;
 
 	/**
 	 * Called when the activity is first created.
@@ -74,12 +79,11 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 		// get TextView for
 		textView = (TextView) findViewById(R.id.textView);
 
+		controller = new Controller();
+
 		dPadView = new DPadView(this);
 
 		super.onCreate(savedInstanceState);
-
-		// ConnectToDrone connection = new ConnectToDrone("192.168.1.1");
-		// this.control = new DroneCommands(connection);
 
 	}
 
@@ -120,35 +124,35 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 				// changes to active and deactivate the button towards.
 				if (x >= 50 && x <= 130 && y >= 280 && y <= 380) {
 					button_turn_left.setPressed(true);
-					dPadView.turnLeft(textView);
+					dPadView.turnLeft(textView, -moveValue);
 					button_turn_right.setPressed(false);
 				} else if (x >= 230 && x <= 300 && y >= 280 && y <= 380) {
 					button_turn_right.setPressed(true);
-					dPadView.turnRight(textView);
+					dPadView.turnRight(textView, moveValue);
 					button_turn_left.setPressed(false);
 				} else if (x >= 100 && x <= 230 && y >= 180 && y <= 300) {
 					button_move_up.setPressed(true);
-					dPadView.moveUp(textView);
+					dPadView.moveUp(textView, moveValue);
 					button_move_down.setPressed(false);
 				} else if (x >= 100 && x <= 230 && y >= 381 && y <= 500) {
 					button_move_down.setPressed(true);
-					dPadView.moveDown(textView);
+					dPadView.moveDown(textView, -moveValue);
 					button_move_up.setPressed(false);
 				} else if (x >= 550 && x <= 630 && y >= 280 && y <= 380 && !gyro) {
 					button_move_left.setPressed(true);
-					dPadView.moveLeft(textView);
+					dPadView.moveLeft(textView, -moveValue);
 					button_move_right.setPressed(false);
 				} else if (x >= 720 && x <= 800 && y >= 280 && y <= 380 && !gyro) {
 					button_move_right.setPressed(true);
-					dPadView.moveRight(textView);
+					dPadView.moveRight(textView, moveValue);
 					button_move_left.setPressed(false);
 				} else if (x >= 600 && x <= 730 && y >= 180 && y <= 300 && !gyro) {
 					button_move_forward.setPressed(true);
-					dPadView.moveForward(textView);
+					dPadView.moveForward(textView, -moveValue);
 					button_move_backward.setPressed(false);
 				} else if (x >= 600 && x <= 730 && y >= 381 && y <= 500 && !gyro) {
 					button_move_backward.setPressed(true);
-					dPadView.moveBackward(textView);
+					dPadView.moveBackward(textView, moveValue);
 					button_move_forward.setPressed(false);
 				}
 
@@ -276,6 +280,8 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 
 		// get TextView for
 		textView = (TextView) findViewById(R.id.textView);
+
+		controller.initialize();
 	}
 
 	/**
@@ -288,26 +294,35 @@ public class Drone extends Activity implements OnTouchListener, SensorEventListe
 	private void updateOrientation(float y, float x) {
 
 		if (x < -2 && y <= 2 && y >= -2) {
-			dPadView.moveLeft(textView);
+			Log.w("Werte", "y " + y + "x " + x);
+			dPadView.moveLeft(textView, x);
 		} else if (x > 2 && y <= 2 && y >= -2) {
-			dPadView.moveRight(textView);
+			Log.w("Werte", "y " + y + "x " + x);
+			dPadView.moveRight(textView, x);
 		} else if (y < -2 && x <= 2 && x >= -2) {
-			dPadView.moveForward(textView);
+			Log.w("Werte", "y " + y + "x " + x);
+			dPadView.moveForward(textView, y);
 		} else if (y > 2 && x <= 2 && x >= -2) {
-			dPadView.moveBackward(textView);
+			Log.w("Werte", "y " + y + "x " + x);
+			dPadView.moveBackward(textView, y);
 		} else if (x < -2 && y < -2) {
-			dPadView.moveLeft(textView);
-			dPadView.moveForward(textView);
+			Log.w("Werte", "y " + y + "x " + x);
+			dPadView.moveLeft(textView, x);
+			dPadView.moveForward(textView, y);
 		} else if (x < -2 && y > 2) {
-			dPadView.moveLeft(textView);
-			dPadView.moveBackward(textView);
+			Log.w("Werte", "y " + y + "x " + x);
+			dPadView.moveLeft(textView, x);
+			dPadView.moveBackward(textView, y);
 		} else if (x > 2 && y < -2) {
-			dPadView.moveRight(textView);
-			dPadView.moveForward(textView);
+			Log.w("Werte", "y " + y + "x " + x);
+			dPadView.moveRight(textView, x);
+			dPadView.moveForward(textView, y);
 		} else if (x > 2 && y > 2) {
-			dPadView.moveRight(textView);
-			dPadView.moveBackward(textView);
+			Log.w("Werte", "y " + y + "x " + x);
+			dPadView.moveRight(textView, x);
+			dPadView.moveBackward(textView, y);
 		} else {
+			Log.w("Werte", "y " + y + "x " + x);
 			dPadView.hover(textView);
 		}
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android" android:background="#FFFFFF" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    
+    <ImageView android:id="@+id/imageView" android:layout_x="0dip" android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_y="0dip" android:scaleType="fitStart"></ImageView>
+    <SeekBar android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_x="13dip" android:layout_y="126dip" android:id="@+id/baseSpeed"></SeekBar>
+
+</AbsoluteLayout>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import de.leuphana.ardrone.dronesystem.api.IControlDrone;
 
 /**
  * Provides Methods for DroneControl which start movement. Extends View to print corresponding
@@ -14,8 +15,11 @@ import android.widget.TextView;
  */
 public class DPadView extends View {
 
+	private final IControlDrone flightManager;
+
 	public DPadView(Context main) {
 		super(main);
+		flightManager = Drone.controller.getFlightManager();
 
 	}
 
@@ -24,7 +28,9 @@ public class DPadView extends View {
 	 * 
 	 * @param view
 	 */
-	public void moveForward(View view) {
+	public void moveForward(View view, float moveValue) {
+
+		flightManager.move(null, null, moveValue, null);
 
 		// this.control.start();
 
@@ -41,7 +47,9 @@ public class DPadView extends View {
 	 * 
 	 * @param view
 	 */
-	public void moveBackward(View view) {
+	public void moveBackward(View view, float moveValue) {
+
+		flightManager.move(null, null, moveValue, null);
 
 		// this.control.land();
 
@@ -58,7 +66,9 @@ public class DPadView extends View {
 	 * 
 	 * @param view
 	 */
-	public void turnLeft(View view) {
+	public void turnLeft(View view, float moveValue) {
+
+		flightManager.move(null, null, null, moveValue);
 
 		// this.control.turnHorz(0.2f);
 
@@ -74,7 +84,9 @@ public class DPadView extends View {
 	 * 
 	 * @param view
 	 */
-	public void turnRight(View view) {
+	public void turnRight(View view, float moveValue) {
+
+		flightManager.move(null, null, null, moveValue);
 
 		// this.control.turnHorz(-0.2f);
 
@@ -91,7 +103,9 @@ public class DPadView extends View {
 	 * 
 	 * @param view
 	 */
-	public void moveLeft(View view) {
+	public void moveLeft(View view, float moveValue) {
+
+		flightManager.move(moveValue, null, null, null);
 
 		// this.control.turnHorz(0.2f);
 
@@ -108,7 +122,9 @@ public class DPadView extends View {
 	 * 
 	 * @param view
 	 */
-	public void moveRight(View view) {
+	public void moveRight(View view, float moveValue) {
+
+		flightManager.move(moveValue, null, null, null);
 
 		// this.control.turnHorz(-0.2f);
 
@@ -127,6 +143,8 @@ public class DPadView extends View {
 	 */
 	public void getOff(View view) {
 
+		flightManager.start();
+
 		// getFlyingState
 
 		TextView textView = (TextView) view;
@@ -142,6 +160,8 @@ public class DPadView extends View {
 	 * @param view
 	 */
 	public void getDown(View view) {
+
+		flightManager.land();
 
 		// getFlyingState
 
@@ -159,6 +179,8 @@ public class DPadView extends View {
 	 */
 	public void hover(View view) {
 
+		flightManager.hover(true);
+
 		// this.control.turnHorz(0.2f);
 
 		TextView textView = (TextView) view;
@@ -174,7 +196,9 @@ public class DPadView extends View {
 	 * 
 	 * @param view
 	 */
-	public void moveUp(View view) {
+	public void moveUp(View view, float moveValue) {
+
+		flightManager.move(null, moveValue, null, null);
 
 		// this.control.turnHorz(0.2f);
 
@@ -191,7 +215,9 @@ public class DPadView extends View {
 	 * 
 	 * @param view
 	 */
-	public void moveDown(View view) {
+	public void moveDown(View view, float moveValue) {
+
+		flightManager.move(null, moveValue, null, null);
 
 		// this.control.turnHorz(0.2f);
 
@@ -209,6 +235,8 @@ public class DPadView extends View {
 	 * @param view
 	 */
 	public void panic(View view) {
+
+		flightManager.land();
 
 		// this.control.turnHorz(0.2f);
 

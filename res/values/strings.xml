@@ -27,5 +27,6 @@
     <string name="hover">Hover</string>
     <string name="panic">Panic</string>
     <item type="xml" name="firstview">firstview.xml</item>
+    <item type="xml" name="optionsview">options.xml</item>
     <string name="button_start_app">Start Application</string>
 </resources>
